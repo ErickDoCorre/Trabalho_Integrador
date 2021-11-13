@@ -22,10 +22,12 @@ horarioConsulta varchar(30), tipoConsulta varchar(30), valorConsulta varchar(30)
 create table relatorio(idRelatorio int primary key not null auto_increment, idFuncionario int, idPaciente int, dataConsulta varchar(30), imcPaciente varchar(50), atestadoPaciente varchar(255),
 prontuarioConsulta varchar(255)) ;
 
-create table login(idLogin int  primary key not null auto_increment, usuarioLogin varchar(255));
+create table login(idFuncionario int, idPaciente int, usuarioLogin varchar(255));
 
 alter table consulta add constraint fk_idPaciente foreign key (idPaciente) references paciente (idPaciente);
 alter table consulta add constraint fk_idFuncionario foreign key (idFuncionario) references funcionario (idFuncionario);
 alter table relatorio add constraint fk_idPaciente2 foreign key (idPaciente) references paciente (idPaciente);
 alter table relatorio add constraint fk_idFuncionario2 foreign key (idFuncionario) references funcionario (idFuncionario);
+alter table login add constraint fk_idPaciente3 foreign key (idPaciente) references paciente (idPaciente);
+alter table login add constraint fk_idFuncionario3 foreign key (idFuncionario) references funcionario (idFuncionario);
 
